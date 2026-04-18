@@ -1,0 +1,252 @@
+@import "tailwindcss";
+
+@theme {
+  --color-wedding-blue: #4a7c9b;
+  --color-wedding-gold: #c9a962;
+  --color-wedding-cream: #fdfbf7;
+  --color-wedding-navy: #2c3e50;
+  --color-wedding-light-blue: #a8c5d8;
+}
+
+@layer base {
+  :root {
+    --wedding-blue: #4a7c9b;
+    --wedding-gold: #c9a962;
+    --wedding-cream: #fdfbf7;
+    --wedding-navy: #2c3e50;
+    --wedding-light-blue: #a8c5d8;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    background: linear-gradient(135deg, #e8f4f8 0%, #fdfbf7 50%, #e8f4f8 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .font-script {
+    font-family: 'Great Vibes', cursive;
+  }
+
+  .font-elegant {
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .envelope-wrapper {
+    perspective: 1500px;
+  }
+
+  .envelope {
+    position: relative;
+    width: 320px;
+    height: 450px;
+    background: linear-gradient(180deg, #fdfbf7 0%, #f5f0e8 100%);
+    border-radius: 8px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(74, 124, 155, 0.1);
+  }
+
+  .wax-seal {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(145deg, #a8c5d8 0%, #6b9bb8 50%, #4a7c9b 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+      0 8px 16px rgba(74, 124, 155, 0.4),
+      inset 0 2px 4px rgba(255, 255, 255, 0.3),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 10;
+  }
+
+  .wax-seal::before {
+    content: '';
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .wax-seal:hover {
+    transform: scale(1.05);
+    box-shadow: 
+      0 12px 24px rgba(74, 124, 155, 0.5),
+      inset 0 2px 4px rgba(255, 255, 255, 0.4),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .wax-seal-text {
+    font-family: 'Great Vibes', cursive;
+    font-size: 28px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .invitation-card {
+    background: linear-gradient(180deg, #fdfbf7 0%, #f8f5f0 100%);
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .invitation-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 3px solid transparent;
+    border-image: linear-gradient(135deg, #a8c5d8, #4a7c9b, #a8c5d8) 1;
+    pointer-events: none;
+  }
+
+  .couple-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    color: #4a7c9b;
+    text-shadow: 2px 2px 4px rgba(74, 124, 155, 0.2);
+    line-height: 1.2;
+  }
+
+  .wedding-text {
+    font-family: 'Cormorant Garamond', serif;
+    color: #2c3e50;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+
+  .wedding-detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1.1rem;
+  }
+
+  .wedding-detail-icon {
+    font-size: 1.2rem;
+  }
+
+  .decorative-line {
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #4a7c9b, transparent);
+    margin: 1rem auto;
+  }
+
+  .heart-icon {
+    color: #c9746c;
+  }
+
+  .rsvp-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: transparent;
+    border: none;
+    color: #4a7c9b;
+  }
+
+  .rsvp-yes {
+    background: transparent;
+    color: #4a7c9b;
+  }
+
+  .rsvp-yes:hover {
+    background: rgba(74, 124, 155, 0.08);
+  }
+
+  .rsvp-no {
+    background: transparent;
+    color: #6b7c85;
+  }
+
+  .rsvp-no:hover {
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+}
+
+@layer utilities {
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .couple-names {
+    font-size: 2.5rem;
+  }
+  
+  .envelope {
+    width: 280px;
+    height: 400px;
+  }
+  
+  .wax-seal {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .wax-seal-text {
+    font-size: 24px;
+  }
+}
