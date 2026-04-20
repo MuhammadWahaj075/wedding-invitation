@@ -26,29 +26,21 @@ export default function InvitationCard() {
 
   return (
     <motion.div
-      className="relative max-w-lg w-full mx-4"
+      className="relative max-w-lg w-full mx-4 overflow-visible"
       initial={{ opacity: 0, scale: 0.8, rotateY: -90 }}
       animate={{ opacity: 1, scale: 1, rotateY: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <motion.div
-        className="invitation-card bg-wedding-cream p-8 md:p-12 relative"
+        className="invitation-card bg-wedding-cream p-8 md:p-12 relative overflow-visible"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <div className="absolute top-0 left-0 w-32 h-32 md:w-40 md:h-40">
-          <FloralDecoration position="corner-top-left" />
-        </div>
-        <div className="absolute top-0 right-0 w-32 h-32 md:w-40 md:h-40">
-          <FloralDecoration position="corner-top-right" />
-        </div>
-        <div className="absolute bottom-0 left-0 w-32 h-32 md:w-40 md:h-40">
-          <FloralDecoration position="corner-bottom-left" />
-        </div>
-        <div className="absolute bottom-0 right-0 w-32 h-32 md:w-40 md:h-40">
-          <FloralDecoration position="corner-bottom-right" />
-        </div>
+        <FloralDecoration position="corner-top-left" />
+        <FloralDecoration position="corner-top-right" />
+        <FloralDecoration position="corner-bottom-left" />
+        <FloralDecoration position="corner-bottom-right" />
 
         <div className="absolute inset-4 md:inset-6 border-2 border-wedding-blue/20 rounded-lg pointer-events-none" />
         
