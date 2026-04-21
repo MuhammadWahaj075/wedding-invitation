@@ -39,7 +39,6 @@ export default function InvitationCard() {
         animate="visible"
       >
 
-        {/* Double inner border like reference card */}
         <div className="absolute inset-3 border border-wedding-blue/30 pointer-events-none" style={{zIndex:1}} />
         <div className="absolute inset-5 border border-wedding-blue/15 pointer-events-none" style={{zIndex:1}} />
         
@@ -82,12 +81,17 @@ export default function InvitationCard() {
 
           <motion.div variants={itemVariants} className="my-6">
             <p className="wedding-text text-base md:text-lg mb-2">Presso la chiesa:</p>
-            <div className="wedding-detail">
+            <a
+              href="#"
+              onClick={(e) => { e.preventDefault(); window.open('https://maps.app.goo.gl/HYGVmfJs6dhR1jYQ9', '_blank') }}
+              rel="noopener noreferrer"
+              className="wedding-detail inline-flex hover:opacity-70 transition-opacity cursor-pointer"
+            >
               <span className="wedding-detail-icon">⛪</span>
-              <span className="wedding-text text-lg md:text-xl font-semibold">
+              <span className="wedding-text text-lg md:text-xl font-semibold underline underline-offset-2 decoration-wedding-blue/40">
                 Santa Teresa alla Kalsa
               </span>
-            </div>
+            </a>
           </motion.div>
 
           <div className="decorative-line" />
@@ -97,12 +101,17 @@ export default function InvitationCard() {
               Dopo la cerimonia gli sposi sono lieti di ricevere parenti ed amici
             </p>
             <p className="wedding-text text-base mb-2">Presso:</p>
-            <div className="wedding-detail">
+            <a
+              href="#"
+              onClick={(e) => { e.preventDefault(); window.open('https://maps.app.goo.gl/kbdSdZuG1vzEFGsHA', '_blank') }}
+              rel="noopener noreferrer"
+              className="wedding-detail inline-flex hover:opacity-70 transition-opacity cursor-pointer"
+            >
               <span className="wedding-detail-icon">📍</span>
-              <span className="wedding-text text-lg md:text-xl font-semibold">
+              <span className="wedding-text text-lg md:text-xl font-semibold underline underline-offset-2 decoration-wedding-blue/40">
                 Tenuta Principe Mirto, Villafrati
               </span>
-            </div>
+            </a>
           </motion.div>
 
           <div className="decorative-line" />
@@ -123,7 +132,7 @@ export default function InvitationCard() {
                 className="rsvp-button rsvp-yes"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => window.open('https://wa.me/?text=Sì, parteciperò con piacere al vostro matrimonio! 🎉', '_blank')}
+                onClick={() => window.open('https://wa.me/923022838789?text=' + encodeURIComponent('Ciao! Grazie per l\'invito, verrò con piacere al vostro matrimonio! 🎉'), '_blank')}
               >
                 <span className="mr-1.5 text-sm">✓</span>
                 Sì, con piacere
@@ -132,7 +141,7 @@ export default function InvitationCard() {
                 className="rsvp-button rsvp-no"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => window.open('https://wa.me/?text=Mi dispiace, purtroppo non potrò partecipare. Vi auguro ogni felicità! 💕', '_blank')}
+                onClick={() => window.open('https://wa.me/923022838789?text=' + encodeURIComponent('Ciao! Grazie per l\'invito, purtroppo non potrò partecipare. Vi auguro ogni felicità! 💕'), '_blank')}
               >
                 <span className="mr-1.5 text-sm">✗</span>
                 No, mi dispiace
@@ -168,10 +177,10 @@ export default function InvitationCard() {
             variants={itemVariants}
             className="mt-6"
           >
-            <p className="wedding-text text-xl md:text-2xl font-semibold flex items-center justify-center gap-2">
-              Grazie di cuore
+            <p className="wedding-text text-xl md:text-2xl font-semibold text-center">
+              Grazie di cuore&nbsp;
               <motion.span 
-                className="text-2xl heart-icon"
+                className="text-2xl heart-icon inline-block"
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 1, repeat: Infinity }}
               >
