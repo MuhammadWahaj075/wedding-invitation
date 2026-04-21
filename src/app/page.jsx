@@ -20,7 +20,7 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
+    <main className=" flex items-start sm:items-center justify-center px-2 py-8 relative overflow-y-hidden">
       <FloralBackground />
       
       <MusicPlayer play={isOpen} />

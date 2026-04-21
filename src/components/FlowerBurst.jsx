@@ -1,143 +1,81 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+
+const PIECES = [
+  { src: '/flowers/flower-top.png',         w: 90,  h: 90,  anim: 1,  delay: 0    },
+  { src: '/flowers/flower-top-right.png',   w: 90,  h: 90,  anim: 2,  delay: 0.05 },
+  { src: '/flowers/flower-bottom.png',      w: 100, h: 100, anim: 3,  delay: 0.02 },
+  { src: '/flowers/flowers-horizontal.png', w: 120, h: 65,  anim: 4,  delay: 0.08 },
+  { src: '/flowers/flowers-vertical.png',   w: 65,  h: 110, anim: 5,  delay: 0.04 },
+  { src: '/flowers/bow.png',                w: 85,  h: 55,  anim: 6,  delay: 0.1  },
+  { src: '/flowers/flower-top.png',         w: 75,  h: 75,  anim: 7,  delay: 0.06 },
+  { src: '/flowers/flower-top-right.png',   w: 80,  h: 80,  anim: 8,  delay: 0.03 },
+  { src: '/flowers/flower-bottom.png',      w: 90,  h: 90,  anim: 9,  delay: 0.07 },
+  { src: '/flowers/flowers-horizontal.png', w: 110, h: 60,  anim: 10, delay: 0.01 },
+  { src: '/flowers/flowers-vertical.png',   w: 60,  h: 100, anim: 11, delay: 0.09 },
+  { src: '/flowers/bow.png',                w: 80,  h: 50,  anim: 12, delay: 0.05 },
+  { src: '/flowers/flower-top.png',         w: 85,  h: 85,  anim: 13, delay: 0.03 },
+  { src: '/flowers/flower-bottom.png',      w: 95,  h: 95,  anim: 14, delay: 0.08 },
+  { src: '/flowers/flowers-vertical.png',   w: 55,  h: 95,  anim: 15, delay: 0.06 },
+  { src: '/flowers/flower-top-right.png',   w: 85,  h: 85,  anim: 16, delay: 0.04 },
+  { src: '/flowers/flowers-horizontal.png', w: 115, h: 62,  anim: 17, delay: 0.02 },
+  { src: '/flowers/bow.png',                w: 75,  h: 48,  anim: 18, delay: 0.07 },
+]
+
+const DURATION = 2.6 // seconds
 
 export default function FlowerBurst({ onComplete }) {
-  const [flowers, setFlowers] = useState([])
-
   useEffect(() => {
-    const flowerTypes = ['rose', 'petal', 'leaf', 'bud']
-    const newFlowers = []
-
-    for (let i = 0; i < 25; i++) {
-      newFlowers.push({
-        id: i,
-        type: flowerTypes[Math.floor(Math.random() * flowerTypes.length)],
-        x: Math.random() * 200 - 100,
-        y: Math.random() * -300 - 100,
-        rotation: Math.random() * 720 - 360,
-        scale: 0.5 + Math.random() * 0.8,
-        delay: Math.random() * 0.3,
-        duration: 2 + Math.random() * 1.5,
-      })
-    }
-    setFlowers(newFlowers)
-
     const timer = setTimeout(() => {
       if (onComplete) onComplete()
-    }, 3500)
-
+    }, (DURATION + 0.4) * 1000)
     return () => clearTimeout(timer)
   }, [onComplete])
 
-  const renderFlower = (flower) => {
-    switch (flower.type) {
-      case 'rose':
-        return (
-          <svg viewBox="0 0 50 50" className="w-full h-full">
-            <defs>
-              <linearGradient id={`rose-${flower.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#4a7c9b" />
-                <stop offset="100%" stopColor="#2c5282" />
-              </linearGradient>
-              <radialGradient id={`roseCenter-${flower.id}`} cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#ffffff" />
-                <stop offset="100%" stopColor="#e8e4dc" />
-              </radialGradient>
-            </defs>
-            <ellipse cx="25" cy="25" rx="22" ry="20" fill={`url(#rose-${flower.id})`} opacity="0.9"/>
-            <ellipse cx="22" cy="22" rx="15" ry="13" fill="#6b9bb8" opacity="0.85"/>
-            <ellipse cx="27" cy="27" rx="12" ry="10" fill="#a8c5d8" opacity="0.9"/>
-            <circle cx="25" cy="25" r="5" fill={`url(#roseCenter-${flower.id})`}/>
-          </svg>
-        )
-      case 'petal':
-        return (
-          <svg viewBox="0 0 40 40" className="w-full h-full">
-            <ellipse cx="20" cy="20" rx="18" ry="12" fill="#a8c5d8" opacity="0.85" transform="rotate(45 20 20)"/>
-          </svg>
-        )
-      case 'leaf':
-        return (
-          <svg viewBox="0 0 40 40" className="w-full h-full">
-            <ellipse cx="20" cy="20" rx="16" ry="6" fill="#5a8a9a" opacity="0.8" transform="rotate(-30 20 20)"/>
-          </svg>
-        )
-      case 'bud':
-        return (
-          <svg viewBox="0 0 30 30" className="w-full h-full">
-            <circle cx="15" cy="15" r="12" fill="#6b9bb8" opacity="0.8"/>
-            <circle cx="15" cy="15" r="7" fill="#a8c5d8" opacity="0.9"/>
-            <circle cx="15" cy="15" r="3" fill="#fdfbf7"/>
-          </svg>
-        )
-      default:
-        return null
-    }
-  }
-
-  const getSize = (type) => {
-    switch (type) {
-      case 'rose': return 'w-12 h-12 md:w-16 md:h-16'
-      case 'petal': return 'w-8 h-8 md:w-10 md:h-10'
-      case 'leaf': return 'w-10 h-10 md:w-12 md:h-12'
-      case 'bud': return 'w-6 h-6 md:w-8 md:h-8'
-      default: return 'w-8 h-8'
-    }
-  }
-
   return (
-    <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        {flowers.map((flower) => (
-          <motion.div
-            key={flower.id}
-            className={`absolute ${getSize(flower.type)}`}
-            initial={{ 
-              x: 0, 
-              y: 0, 
-              scale: 0, 
-              opacity: 0,
-              rotate: 0 
-            }}
-            animate={{ 
-              x: flower.x * 3,
-              y: flower.y,
-              scale: flower.scale,
-              opacity: [0, 1, 1, 0],
-              rotate: flower.rotation
-            }}
-            transition={{
-              duration: flower.duration,
-              delay: flower.delay,
-              ease: [0.25, 0.46, 0.45, 0.94],
-              opacity: {
-                times: [0, 0.1, 0.7, 1],
-                duration: flower.duration,
-              }
-            }}
-            style={{
-              left: '50%',
-              top: '50%',
-              marginLeft: '-20px',
-              marginTop: '-20px',
-            }}
-          >
-            {renderFlower(flower)}
-          </motion.div>
-        ))}
-      </div>
-
-      <motion.div 
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full"
-        initial={{ scale: 0, opacity: 0.6 }}
-        animate={{ scale: 8, opacity: 0 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
+    <div
+      className="fixed inset-0 pointer-events-none z-50 overflow-hidden"
+      style={{ perspective: '600px' }}
+    >
+      {/* Ripple ring */}
+      <div
         style={{
-          background: 'radial-gradient(circle, rgba(168,197,216,0.4) 0%, transparent 70%)'
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          width: 160,
+          height: 160,
+          marginLeft: -80,
+          marginTop: -80,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(168,197,216,0.5) 0%, transparent 70%)',
+          animation: `ripple-expand ${DURATION * 0.5}s ease-out forwards`,
         }}
       />
+
+      {/* Flower pieces */}
+      {PIECES.map((p, i) => (
+        <img
+          key={i}
+          src={p.src}
+          alt=""
+          draggable={false}
+          style={{
+            position: 'absolute',
+            left: '50%',
+            top: '50%',
+            width: p.w,
+            height: p.h,
+            marginLeft: -p.w / 2,
+            marginTop: -p.h / 2,
+            objectFit: 'contain',
+            transformOrigin: 'center center',
+            opacity: 0,
+            animation: `flower-fly-${p.anim} ${DURATION}s ease-out ${p.delay}s forwards`,
+          }}
+        />
+      ))}
     </div>
   )
 }
