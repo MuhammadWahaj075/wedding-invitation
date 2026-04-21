@@ -196,12 +196,10 @@ export default function InvitationCard() {
             <span className="text-3xl">💍</span>
           </motion.div>
 
-          {/* Spacer so content doesn't hide behind bottom flowers */}
           <div className="h-20 sm:h-16" />
         </div>
       </motion.div>
 
-      {/* All decorations rendered AFTER card so they appear on top */}
       <FloralDecoration position="corner-top-left" />
       <FloralDecoration position="corner-top-right" />
       <FloralDecoration position="corner-bottom-right" />
