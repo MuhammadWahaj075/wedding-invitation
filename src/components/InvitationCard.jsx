@@ -26,33 +26,24 @@ export default function InvitationCard() {
 
   return (
     <motion.div
-      className="relative max-w-lg w-full mx-4"
+      className="relative w-full mx-auto"
+      style={{ maxWidth: 'min(448px, calc(100vw - 24px))' }}
       initial={{ opacity: 0, scale: 0.8, rotateY: -90 }}
       animate={{ opacity: 1, scale: 1, rotateY: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <motion.div
-        className="invitation-card bg-wedding-cream p-8 md:p-12 relative"
+        className="invitation-card bg-wedding-cream px-6 py-6 sm:px-10 sm:py-8 md:px-14 md:py-10 relative overflow-hidden"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <div className="absolute top-0 left-0 w-32 h-32 md:w-40 md:h-40">
-          <FloralDecoration position="corner-top-left" />
-        </div>
-        <div className="absolute top-0 right-0 w-32 h-32 md:w-40 md:h-40">
-          <FloralDecoration position="corner-top-right" />
-        </div>
-        <div className="absolute bottom-0 left-0 w-32 h-32 md:w-40 md:h-40">
-          <FloralDecoration position="corner-bottom-left" />
-        </div>
-        <div className="absolute bottom-0 right-0 w-32 h-32 md:w-40 md:h-40">
-          <FloralDecoration position="corner-bottom-right" />
-        </div>
 
-        <div className="absolute inset-4 md:inset-6 border-2 border-wedding-blue/20 rounded-lg pointer-events-none" />
+        {/* Double inner border like reference card */}
+        <div className="absolute inset-3 border border-wedding-blue/30 pointer-events-none" style={{zIndex:1}} />
+        <div className="absolute inset-5 border border-wedding-blue/15 pointer-events-none" style={{zIndex:1}} />
         
-        <div className="relative z-10 text-center py-4">
+        <div className="relative z-10 text-center pt-2 pb-0">
           <motion.div variants={itemVariants} className="mb-6">
             <h1 className="couple-names">
               Alessandro
@@ -195,8 +186,19 @@ export default function InvitationCard() {
           >
             <span className="text-3xl">💍</span>
           </motion.div>
+
+          {/* Spacer so content doesn't hide behind bottom flowers */}
+          <div className="h-20 sm:h-16" />
         </div>
       </motion.div>
+
+      {/* All decorations rendered AFTER card so they appear on top */}
+      <FloralDecoration position="corner-top-left" />
+      <FloralDecoration position="corner-top-right" />
+      <FloralDecoration position="corner-bottom-right" />
+      <FloralDecoration position="bottom-ribbon" />
+      <FloralDecoration position="bottom-horizontal" />
+      <FloralDecoration position="bottom-bow" />
     </motion.div>
   )
 }

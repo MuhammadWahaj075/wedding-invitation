@@ -34,12 +34,7 @@ export default function Envelope({ onOpen }) {
 
         <div className="envelope relative overflow-hidden">
           <div className="absolute inset-0 opacity-5">
-            <svg className="w-full h-full" viewBox="0 0 100 100">
-              <pattern id="envelope-pattern" patternUnits="userSpaceOnUse" width="20" height="20">
-                <circle cx="10" cy="10" r="1" fill="#4a7c9b"/>
-              </pattern>
-              <rect width="100%" height="100%" fill="url(#envelope-pattern)"/>
-            </svg>
+            <img src="/envelope-pattern.svg" className="w-full h-full" alt="" aria-hidden="true" />
           </div>
 
           <motion.div 
@@ -82,9 +77,7 @@ export default function Envelope({ onOpen }) {
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       >
-        <svg className="w-6 h-6 text-wedding-blue opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-        </svg>
+        <img src="/arrow-up.svg" className="w-6 h-6 opacity-50" alt="" aria-hidden="true" />
       </motion.div>
     </motion.div>
   )
