@@ -135,6 +135,40 @@
     letter-spacing: 0.05em;
   }
 
+
+  .invitation-script-title {
+    font-size: clamp(2.2rem, 6vw, 3.1rem);
+    line-height: 1.08;
+    text-shadow: 2px 2px 3px rgba(74, 124, 155, 0.12);
+  }
+
+  .invitation-ampersand {
+    font-size: clamp(1.5rem, 4vw, 2.1rem);
+    line-height: 1;
+  }
+
+  .invitation-intro {
+    font-family: 'Cormorant Garamond', serif;
+    color: #587894;
+    font-style: italic;
+    font-size: clamp(1.45rem, 4.2vw, 2rem);
+    letter-spacing: 0.02em;
+  }
+
+  .invitation-copy {
+    font-family: 'Cormorant Garamond', serif;
+    color: #516f89;
+    letter-spacing: 0.015em;
+  }
+
+  .invitation-highlight {
+    color: #4f7191;
+  }
+
+  .invitation-muted {
+    color: #6b88a1;
+  }
+
   .wedding-detail {
     display: flex;
     align-items: center;
@@ -147,6 +181,21 @@
     font-size: 1.2rem;
   }
 
+  .invitation-detail-row {
+    gap: 12px;
+  }
+
+  .simple-icon {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    stroke: #6d91b0;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }
+
   .decorative-line {
     width: 60%;
     height: 1px;
@@ -154,45 +203,60 @@
     margin: 1rem auto;
   }
 
+  .invitation-message-box {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.62) 0%, rgba(232, 244, 248, 0.22) 100%);
+    border-radius: 22px;
+    padding: 1.25rem 1.1rem;
+  }
+
   .heart-icon {
     color: #c9746c;
+  }
+
+  .envelope-open-label {
+    font-family: 'Cormorant Garamond', serif;
+    color: #587894;
+    font-size: 1.4rem;
+    font-style: italic;
+    letter-spacing: 0.04em;
   }
 
   .rsvp-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 14px;
-    border-radius: 4px;
+    padding: 9px 16px;
+    border-radius: 999px;
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(0.85rem, 3vw, 1rem);
     font-weight: 500;
     letter-spacing: 0.03em;
     cursor: pointer;
     transition: all 0.2s ease;
-    background: transparent;
-    border: none;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(109, 145, 176, 0.28);
     color: #4a7c9b;
     white-space: nowrap;
+    box-shadow: 0 8px 18px rgba(74, 124, 155, 0.08);
   }
 
   .rsvp-yes {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.88);
     color: #4a7c9b;
   }
 
   .rsvp-yes:hover {
-    background: rgba(74, 124, 155, 0.08);
+    background: rgba(168, 197, 216, 0.2);
   }
 
   .rsvp-no {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.75);
     color: #6b7c85;
   }
 
   .rsvp-no:hover {
-    background: rgba(0, 0, 0, 0.05);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background: rgba(107, 145, 176, 0.12);
+    box-shadow: 0 8px 18px rgba(74, 124, 155, 0.1);
   }
 }
 

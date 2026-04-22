@@ -3,7 +3,55 @@
 import { motion } from 'framer-motion'
 import FloralDecoration from './FloralDecoration'
 
+function CalendarIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="simple-icon" aria-hidden="true">
+      <rect x="4" y="5" width="16" height="15" rx="2" />
+      <path d="M8 3v4" />
+      <path d="M16 3v4" />
+      <path d="M4 9h16" />
+      <path d="M9 13h2" />
+      <path d="M13 13h2" />
+    </svg>
+  )
+}
+
+function ClockIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="simple-icon" aria-hidden="true">
+      <circle cx="12" cy="12" r="8" />
+      <path d="M12 8v5" />
+      <path d="M12 12l3 2" />
+    </svg>
+  )
+}
+
+function ChurchIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="simple-icon" aria-hidden="true">
+      <path d="M12 3v5" />
+      <path d="M9.5 5.5h5" />
+      <path d="M6 10.5L12 6l6 4.5" />
+      <path d="M7 10.5V20" />
+      <path d="M17 10.5V20" />
+      <path d="M5 20h14" />
+      <path d="M10 20v-4a2 2 0 0 1 4 0v4" />
+    </svg>
+  )
+}
+
+function PinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="simple-icon" aria-hidden="true">
+      <path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Z" />
+      <circle cx="12" cy="10" r="2.5" />
+    </svg>
+  )
+}
+
 export default function InvitationCard() {
+  const confirmationNumber = '393296121722'
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -44,156 +92,128 @@ export default function InvitationCard() {
         
         <div className="relative z-10 text-center pt-2 pb-0">
           <motion.div variants={itemVariants} className="mb-6">
-            <h1 className="couple-names">
+            <h1 className="couple-names invitation-script-title">
               Alessandro
             </h1>
             <div className="flex items-center justify-center gap-2 -mt-2">
-              <span className="couple-names text-3xl md:text-4xl">&</span>
+              <span className="couple-names invitation-ampersand">&</span>
             </div>
-            <h1 className="couple-names -mt-2">
+            <h1 className="couple-names invitation-script-title -mt-2">
               Laura
             </h1>
           </motion.div>
 
           <motion.p 
             variants={itemVariants}
-            className="wedding-text text-lg md:text-xl mb-6 italic"
+            className="invitation-intro mb-6"
           >
             Annunciano con gioia il loro matrimonio
           </motion.p>
 
           <div className="decorative-line" />
 
-          <motion.div variants={itemVariants} className="my-6 space-y-3">
-            <div className="wedding-detail">
-              <span className="wedding-detail-icon">📅</span>
-              <span className="wedding-text text-xl md:text-2xl font-semibold">
+          <motion.div variants={itemVariants} className="my-7 space-y-3 invitation-details-block">
+            <div className="wedding-detail invitation-detail-row">
+              <CalendarIcon />
+              <span className="wedding-text invitation-highlight text-xl md:text-2xl font-semibold">
                 5 giugno 2027
               </span>
             </div>
-            <div className="wedding-detail">
-              <span className="wedding-detail-icon">🕐</span>
-              <span className="wedding-text text-lg md:text-xl">
-                alle ore 15:00
+            <div className="wedding-detail invitation-detail-row">
+              <ClockIcon />
+              <span className="wedding-text invitation-highlight text-lg md:text-xl">
+                alle ore 15
               </span>
             </div>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="my-6">
-            <p className="wedding-text text-base md:text-lg mb-2">Presso la chiesa:</p>
+          <motion.div variants={itemVariants} className="my-7 space-y-3">
             <a
               href="#"
               onClick={(e) => { e.preventDefault(); window.open('https://maps.app.goo.gl/HYGVmfJs6dhR1jYQ9', '_blank') }}
               rel="noopener noreferrer"
-              className="wedding-detail inline-flex hover:opacity-70 transition-opacity cursor-pointer"
+              className="wedding-detail invitation-detail-row inline-flex hover:opacity-70 transition-opacity cursor-pointer"
             >
-              <span className="wedding-detail-icon">⛪</span>
-              <span className="wedding-text text-lg md:text-xl font-semibold underline underline-offset-2 decoration-wedding-blue/40">
-                Santa Teresa alla Kalsa
+              <ChurchIcon />
+              <span className="wedding-text text-left text-lg md:text-xl leading-tight underline underline-offset-2 decoration-wedding-blue/30">
+                <span className="block invitation-muted">Presso la chiesa</span>
+                <span className="block invitation-highlight font-semibold">Santa Teresa alla Kalsa</span>
               </span>
             </a>
           </motion.div>
 
           <div className="decorative-line" />
 
-          <motion.div variants={itemVariants} className="my-6">
-            <p className="wedding-text text-base md:text-lg italic mb-2">
+          <motion.div variants={itemVariants} className="my-7 space-y-3">
+            <p className="invitation-copy text-base md:text-lg italic mb-1">
               Dopo la cerimonia gli sposi sono lieti di ricevere parenti ed amici
             </p>
-            <p className="wedding-text text-base mb-2">Presso:</p>
             <a
               href="#"
               onClick={(e) => { e.preventDefault(); window.open('https://maps.app.goo.gl/kbdSdZuG1vzEFGsHA', '_blank') }}
               rel="noopener noreferrer"
-              className="wedding-detail inline-flex hover:opacity-70 transition-opacity cursor-pointer"
+              className="wedding-detail invitation-detail-row inline-flex hover:opacity-70 transition-opacity cursor-pointer"
             >
-              <span className="wedding-detail-icon">📍</span>
-              <span className="wedding-text text-lg md:text-xl font-semibold underline underline-offset-2 decoration-wedding-blue/40">
-                Tenuta Principe Mirto, Villafrati
+              <PinIcon />
+              <span className="wedding-text text-left text-lg md:text-xl leading-tight underline underline-offset-2 decoration-wedding-blue/30">
+                <span className="block invitation-muted">Ricevimento presso</span>
+                <span className="block invitation-highlight font-semibold">Tenuta Principe Mirto a Villafrati</span>
               </span>
             </a>
           </motion.div>
 
           <div className="decorative-line" />
 
-          <motion.div variants={itemVariants} className="my-6">
-            <p className="wedding-text text-lg md:text-xl flex items-center justify-center gap-2">
-              È gradita cortese conferma! 
-              <span className="text-2xl">😊</span>
+          <motion.div variants={itemVariants} className="my-7">
+            <p className="invitation-highlight text-lg md:text-xl italic">
+              È gradita cortese conferma!
             </p>
           </motion.div>
 
+          <motion.div 
+            variants={itemVariants} 
+            className="my-6 invitation-message-box"
+          >
+            <p className="invitation-copy text-sm md:text-base italic leading-relaxed">
+              Conviviamo gia da anni in una casa, per questo non abbiamo creato una lista nozze.
+              Il pensiero piu bello che possiate farci e essere con noi nel nostro grande giorno.
+            </p>
+            <p className="invitation-copy text-sm md:text-base italic mt-4 leading-relaxed">
+              Se gradite farci un regalo, preferiamo metterlo nel salvadanaio e quando lo useremo,
+              avrete contribuito alla nostra felicita.
+            </p>
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="my-5">
+            <p className="invitation-highlight text-base md:text-lg italic">
+              E gradito regalo in busta.
+            </p>
+          </motion.div>
+
+          <div className="decorative-line" />
+
           <motion.div variants={itemVariants} className="my-8">
             <p className="font-script text-3xl md:text-4xl text-wedding-blue mb-5">
-              Parteciperai?
+              Conferma la tua presenza
             </p>
-            <div className="flex flex-row gap-2 justify-center items-center">
+            <div className="flex flex-row gap-2 justify-center items-center flex-wrap">
               <motion.button
                 className="rsvp-button rsvp-yes"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => window.open('https://wa.me/923022838789?text=' + encodeURIComponent('Ciao! Grazie per l\'invito, verrò con piacere al vostro matrimonio! 🎉'), '_blank')}
+                onClick={() => window.open('https://wa.me/' + confirmationNumber + '?text=' + encodeURIComponent('Buonasera! Grazie per l\'invito, confermo con piacere la mia presenza al vostro matrimonio.'), '_blank')}
               >
-                <span className="mr-1.5 text-sm">✓</span>
                 Sì, con piacere
               </motion.button>
               <motion.button
                 className="rsvp-button rsvp-no"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => window.open('https://wa.me/923022838789?text=' + encodeURIComponent('Ciao! Grazie per l\'invito, purtroppo non potrò partecipare. Vi auguro ogni felicità! 💕'), '_blank')}
+                onClick={() => window.open('https://wa.me/' + confirmationNumber + '?text=' + encodeURIComponent('Buonasera! Grazie per l\'invito, purtroppo non riesco a partecipare al vostro matrimonio.'), '_blank')}
               >
-                <span className="mr-1.5 text-sm">✗</span>
                 No, mi dispiace
               </motion.button>
             </div>
-          </motion.div>
-
-          <div className="decorative-line" />
-          <motion.div 
-            variants={itemVariants} 
-            className="my-6 bg-wedding-blue/5 rounded-lg p-4 md:p-6"
-          >
-            <p className="wedding-text text-sm md:text-base italic leading-relaxed">
-              Conviviamo già da anni in una casa, per questo non abbiamo creato una lista nozze.
-              Il pensiero più bello che possiate farci è essere con noi nel nostro grande giorno!
-            </p>
-            <p className="wedding-text text-sm md:text-base italic mt-3 leading-relaxed">
-              Se gradite farci un regalo, preferiamo metterlo nel salvadanaio e quando lo useremo,
-              avrete contribuito alla nostra felicità!
-            </p>
-          </motion.div>
-
-          <motion.div variants={itemVariants} className="my-4">
-            <p className="wedding-text text-base md:text-lg flex items-center justify-center gap-2">
-              È gradito regalo in busta!
-              <span className="text-xl">💝</span>
-            </p>
-          </motion.div>
-
-          <div className="decorative-line" />
-
-          <motion.div 
-            variants={itemVariants}
-            className="mt-6"
-          >
-            <p className="wedding-text text-xl md:text-2xl font-semibold text-center">
-              Grazie di cuore&nbsp;
-              <motion.span 
-                className="text-2xl heart-icon inline-block"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1, repeat: Infinity }}
-              >
-                ❤️
-              </motion.span>
-            </p>
-          </motion.div>
-
-          <motion.div 
-            variants={itemVariants}
-            className="mt-4 flex justify-center"
-          >
-            <span className="text-3xl">💍</span>
           </motion.div>
 
           <div className="h-20 sm:h-16" />

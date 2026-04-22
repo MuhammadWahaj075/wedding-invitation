@@ -2,13 +2,18 @@
 
 import { useRef, useEffect } from 'react'
 
-export default function MusicPlayer({ play = false }) {
+export default function MusicPlayer({ play = false, startAt = 42 }) {
   const audioRef = useRef(null)
+  const hasSeekedRef = useRef(false)
 
   useEffect(() => {
     if (play && audioRef.current) {
       const playAudio = async () => {
         try {
+          if (!hasSeekedRef.current) {
+            audioRef.current.currentTime = startAt
+            hasSeekedRef.current = true
+          }
           audioRef.current.volume = 0.5
           await audioRef.current.play()
         } catch (error) {
@@ -23,6 +28,10 @@ export default function MusicPlayer({ play = false }) {
     const handleFirstInteraction = async () => {
       if (audioRef.current && play) {
         try {
+          if (!hasSeekedRef.current) {
+            audioRef.current.currentTime = startAt
+            hasSeekedRef.current = true
+          }
           audioRef.current.volume = 0.5
           await audioRef.current.play()
         } catch (error) {
@@ -38,7 +47,7 @@ export default function MusicPlayer({ play = false }) {
       document.removeEventListener('click', handleFirstInteraction)
       document.removeEventListener('touchstart', handleFirstInteraction)
     }
-  }, [play])
+  }, [play, startAt])
 
   return (
     <audio

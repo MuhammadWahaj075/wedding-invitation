@@ -37,6 +37,22 @@ export default function Envelope({ onOpen }) {
             <img src="/envelope-pattern.svg" className="w-full h-full" alt="" aria-hidden="true" />
           </div>
 
+          <motion.img
+            src="/flowers/bow.png"
+            alt=""
+            aria-hidden="true"
+            className="absolute left-1/2 z-20 pointer-events-none select-none"
+            style={{
+              top: '120px',
+              width: '120px',
+              transform: 'translateX(-50%)',
+              filter: 'drop-shadow(0 8px 14px rgba(74, 124, 155, 0.22))',
+            }}
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          />
+
           <motion.div 
             className="absolute top-0 left-0 right-0 z-20"
             style={{
@@ -46,15 +62,15 @@ export default function Envelope({ onOpen }) {
             }}
           />
 
-          <div className="absolute bottom-0 left-0 right-0 h-3/4 bg-gradient-to-t from-white to-gray-50 rounded-b-lg" />
+          <div className="absolute bottom-0 left-0 right-0 h-3/4 bg-linear-to-t from-white to-gray-50 rounded-b-lg" />
           <div className="absolute inset-4 top-32 border border-gray-200 rounded opacity-30" />
-          <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-transparent via-gray-200 to-transparent opacity-50" />
-          <div className="absolute right-0 top-0 w-1 h-full bg-gradient-to-b from-transparent via-gray-200 to-transparent opacity-50" />
+          <div className="absolute left-0 top-0 w-1 h-full bg-linear-to-b from-transparent via-gray-200 to-transparent opacity-50" />
+          <div className="absolute right-0 top-0 w-1 h-full bg-linear-to-b from-transparent via-gray-200 to-transparent opacity-50" />
         </div>
 
         <motion.div 
-          className="absolute left-1/2 -translate-x-1/2 z-30"
-          style={{ top: '140px' }}
+          className="absolute left-1/2 -translate-x-1/2 z-40"
+          style={{ top: '125px' }}
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: 1, rotate: 0 }}
           transition={{ delay: 0.5, duration: 0.6, type: "spring", stiffness: 200 }}
@@ -64,9 +80,9 @@ export default function Envelope({ onOpen }) {
       </motion.div>
 
       <motion.p
-        className="mt-8 text-wedding-blue font-script text-xl opacity-70"
+        className="mt-8 envelope-open-label opacity-80"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.7 }}
+        animate={{ opacity: 0.8 }}
         transition={{ delay: 1, duration: 0.5 }}
       >
         clicca qui per aprire
